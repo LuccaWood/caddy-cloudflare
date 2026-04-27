@@ -1,8 +1,7 @@
 # caddy-cloudflare
 Build an image with Cloudflare plugin using Caddy images.
 
-...yaml
-
+```yaml
 services:
   caddy:
     image: ghcr.io/luccawood/caddy-cloudflare:latest
@@ -19,4 +18,4 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./data:/data
       - ./config:/config
-...
+```
