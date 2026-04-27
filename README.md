@@ -19,11 +19,11 @@ services:
       - ./config:/config
 ```
 
+
 使用时，Caddyfile文件配置
 ```
 example.com {
     tls {
-        # 注意：这里直接用 cloudflare，不需要写 api_token 关键字
         dns cloudflare {env.CLOUDFLARE_API_TOKEN}
     }
     
