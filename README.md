@@ -2,6 +2,7 @@
 Build an image with Cloudflare plugin using Caddy images.
 
 ...yaml
+
 services:
   caddy:
     image: ghcr.io/luccawood/caddy-cloudflare:latest
