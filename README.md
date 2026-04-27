@@ -1,6 +1,6 @@
 # caddy-cloudflare
-Build an image with Cloudflare plugin using Caddy images.
-
+自构建的镜像，使用官方的caddy和提供的cloudflare插件，构建的带有插件的dns验证版本
+构建时使用如下yaml
 ```yaml
 services:
   caddy:
@@ -12,10 +12,22 @@ services:
       - "443:443"
       - "443:443/udp" # HTTP/3 需要 UDP 端口
     environment:
-      # 建议通过环境变量传入 Token，不要直接写在 Caddyfile 里
       - CLOUDFLARE_API_TOKEN=你的_Cloudflare_API_Token
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./data:/data
       - ./config:/config
+```
+
+使用时，Caddyfile文件配置
+```
+example.com {
+    tls {
+        # 注意：这里直接用 cloudflare，不需要写 api_token 关键字
+        dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    }
+    
+    # 你的反向代理配置
+    reverse_proxy 192.168.1.100:8080 
+}
 ```
