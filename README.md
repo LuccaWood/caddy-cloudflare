@@ -1,6 +1,7 @@
 # caddy-cloudflare
 自构建的镜像，使用官方的caddy和提供的cloudflare插件，构建的带有插件的dns验证版本
-构建时使用如下yaml
+
+构建后使用如下compose.yaml样例
 ```yaml
 services:
   caddy:
