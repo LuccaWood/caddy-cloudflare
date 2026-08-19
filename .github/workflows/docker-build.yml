@@ -1,8 +1,8 @@
 name: Build Caddy with DNS Plugin
 
 on:
-  push:
-    branches: [ "main" ]  # 每次推送到 main 分支时触发构建
+  #push:
+  #  branches: [ "main" ]  # 每次推送到 main 分支时触发构建
   workflow_dispatch:      # 允许手动点击按钮触发构建
 
 jobs:
