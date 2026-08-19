@@ -26,7 +26,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # --- 转换小写步骤 ---
+      # 转换小写步骤
       - name: Lowercase the repo name
         run: echo "REPO_LOWER=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
@@ -38,3 +38,10 @@ jobs:
           # 这里必须引用上面转换后的 env.REPO_LOWER
           tags: |
             ghcr.io/${{ env.REPO_LOWER }}:latest
+      # 自动删除旧容器
+      - name: Delete untagged images
+        uses: Chocobo1/ghcr-untagged-cleanup-action@v1
+        with:
+          packageName: ${{ env.REPO_LOWER }}
+          owner: ${{ github.repository_owner }}
+          token: ${{ secrets.GITHUB_TOKEN }}
