@@ -38,11 +38,3 @@ jobs:
           # 这里必须引用上面转换后的 env.REPO_LOWER
           tags: |
             ghcr.io/${{ env.REPO_LOWER }}:latest
-      # 自动删除旧容器
-      - name: Delete untagged images
-        uses: datawolf/ghcr-cleanup-action@v1
-        with:
-          package-name: ${{ env.REPO_LOWER }}
-          untagged-only: true
-          owner: ${{ github.repository_owner }}
-          token: ${{ secrets.GITHUB_TOKEN }}
