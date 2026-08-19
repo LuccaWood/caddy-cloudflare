@@ -40,8 +40,9 @@ jobs:
             ghcr.io/${{ env.REPO_LOWER }}:latest
       # 自动删除旧容器
       - name: Delete untagged images
-        uses: Chocobo1/ghcr-untagged-cleanup-action@v1
+        uses: datawolf/ghcr-cleanup-action@v1
         with:
-          packageName: ${{ env.REPO_LOWER }}
+          package-name: ${{ env.REPO_LOWER }}
+          untagged-only: true
           owner: ${{ github.repository_owner }}
           token: ${{ secrets.GITHUB_TOKEN }}
